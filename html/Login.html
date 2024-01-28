@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+            .hi {
+                text-align: center;
+                padding-top: 15px;
+            }
+        </style>
+    </head>
+<body>
+   
+    <div id="abc" align="center">
+        <button onclick="f1()">Click Here</button>
+    <form align="center">
+    <table align="center" border="1px">
+       
+        <caption><h2>login</h2></caption>
+        <tr>
+            <td>User name </td>
+            <td><input type="text" name="user" required></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="pass" required></td>
+        </tr>
+        
+    </table>
+    <div class="hi">
+        <input type="submit" name="submit">
+    </div>
+</form>
+</div>
+<script>
+    let a=1;
+    function f1()
+    {
+        if(a==1){
+            document.body.style.backgroundColor="yellowgreen";
+            document.getElementById('abc').style.color='light blue';
+            a=2;
+        }
+        else if(a==2){
+            document.body.style.backgroundColor=" yellowgreen";
+            a=0;
+        }
+        else{
+            document.body.style.backgroundColor="lightblue";
+            a=1;
+        }
+    }
+</script>
+</body>
+</html>

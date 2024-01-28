@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Bill Management</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: blur(0px);
+    }
+    .content-container {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      width: 80%;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+ 
+      .headingg {
+        background-color: blueviolet;
+        color: white;
+        text-align: center;
+        width: 100%;
+        height: 45px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+ 
+      th, td {
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 12px;
+      }
+ 
+      th {
+        background-color: #4CAF50;
+        color: #fff;
+      }
+ 
+      .quantity-btn {
+        cursor: pointer;
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+      .reset-btn, .a123 {
+        cursor: pointer;
+        padding: 8px 12px;
+        background-color: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+ 
+      #billTable {
+        margin-bottom: 40px;
+      }
+ 
+      #billTable th, #billTable td {
+        background-color: #3498db;
+        color: #fff;
+      }
+ 
+      #billTable td {
+        text-align: center;
+      }
+ 
+      #grandTotal {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+      }
+      .hi {
+        text-align: center;
+      }
+  </style>
+</head>
+<body>
+  <img class="background-image" src="jogsai.jpg" alt="Background Image">
+  <div class="content-container">
+  <div class="headingg"><h2>Hotel Bill Management</h2></div><br>
+  <h3>Menu List</h3>
+  <table id="itemsTable">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pizza</td>
+        <td>$10.00</td>
+        <td><button class="quantity-btn" onclick="changeQuantity(0, -1)">-</button> <span id="quantity_0">0</span> <button class="quantity-btn" onclick="changeQuantity(0, 1)">+</button></td>
+        <td>$<span id="total_0">0.00</span></td>
+        <td><button class="reset-btn" onclick="resetItem(0)">Reset</button></td>
+      </tr>
+      <tr>
+        <td>Burger</td>
+        <td>$15.00</td>
+        <td><button class="quantity-btn" onclick="changeQuantity(1, -1)">-</button> <span id="quantity_1">0</span> <button class="quantity-btn" onclick="changeQuantity(1, 1)">+</button></td>
+        <td>$<span id="total_1">0.00</span></td>
+        <td><button class="reset-btn" onclick="resetItem(1)">Reset</button></td>
+      </tr>
+      <tr>
+        <td>French Fries</td>
+        <td>$20.00</td>
+        <td><button class="quantity-btn" onclick="changeQuantity(2, -1)">-</button> <span id="quantity_2">0</span> <button class="quantity-btn" onclick="changeQuantity(2, 1)">+</button></td>
+        <td>$<span id="total_2">0.00</span></td>
+        <td><button class="reset-btn" onclick="resetItem(2)">Reset</button></td>
+      </tr>
+      <tr>
+        <td>Ice cream</td>
+        <td>$22.50</td>
+        <td><button class="quantity-btn" onclick="changeQuantity(3, -1)">-</button> <span id="quantity_3">0</span> <button class="quantity-btn" onclick="changeQuantity(3, 1)">+</button></td>
+        <td>$<span id="total_3">0.00</span></td>
+        <td><button class="reset-btn" onclick="resetItem(3)">Reset</button></td>
+      </tr>
+      <tr>
+        <td>Noodles</td>
+        <td>$18.75</td>
+        <td><button class="quantity-btn" onclick="changeQuantity(4, -1)">-</button> <span id="quantity_4">0</span> <button class="quantity-btn" onclick="changeQuantity(4, 1)">+</button></td>
+        <td>$<span id="total_4">0.00</span></td>
+        <td><button class="reset-btn" onclick="resetItem(4)">Reset</button></td>
+      </tr>
+      <tr>
+        <td>Badam milk</td>
+        <td>$7.5</td>
+        <td><button class="quantity-btn" onclick="changeQuantity(5, -1)">-</button> <span id="quantity_5">0</span> <button class="quantity-btn" onclick="changeQuantity(5, 1)">+</button></td>
+        <td>$<span id="total_5">0.00</span></td>
+        <td><button class="reset-btn" onclick="resetItem(5)">Reset</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Final Bill</h3>
+  <table id="billTable">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="billItemsBody"></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><b>Total</b></td>
+        <td id="totalAmount">$0.00</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <p id="grandTotal">Grand Total: $<span>0.00</span></p>
+  <script>
+    const prices = [10.00, 15.00, 20.00, 22.50, 18.75, 7.5];
+    const quantities = [0, 0, 0, 0, 0, 0];
+    const totalIds = ['total_0', 'total_1','total_2','total_3','total_4','total_5'];
+    const quantityIds = ['quantity_0', 'quantity_1','quantity_2','quantity_3','quantity_4','quantity_5'];
+    const grandTotalId = 'grandTotal';
+    const billItemsBody = document.getElementById('billItemsBody');
+    const totalAmountId = 'totalAmount';
+
+    function updateTotal(index) {
+      const quantity = quantities[index];
+      const price = prices[index];
+      const total = quantity * price;
+      document.getElementById(totalIds[index]).textContent = total.toFixed(2);
+      updateGrandTotal();
+      updateTotalAmount();
+    }
+
+    function updateTotalAmount() {
+      const totalAmount = prices.reduce((acc, price, index) => acc + (price * quantities[index]), 0);
+      document.getElementById(totalAmountId).innerHTML = `$${totalAmount.toFixed(2)}`;
+    }
+
+    function updateGrandTotal() {
+      const grandTotal = prices.reduce((acc, price, index) => acc + (price * quantities[index]), 0);
+      document.getElementById(grandTotalId).innerHTML = `Grand Total: $<span>${grandTotal.toFixed(2)}</span>`;
+    }
+
+    function changeQuantity(index, amount) {
+      quantities[index] += amount;
+      if (quantities[index] < 0) {
+        quantities[index] = 0;
+      }
+      document.getElementById(quantityIds[index]).textContent = quantities[index];
+      updateTotal(index);
+    }
+
+    function resetItem(index) {
+      quantities[index] = 0;
+      document.getElementById(quantityIds[index]).textContent = 0;
+      document.getElementById(totalIds[index]).textContent = '0.00';
+      updateGrandTotal();
+      updateTotalAmount();
+      updateBillTable();
+    }
+    function resetAllItems() {
+      quantities.fill(0);
+      document.querySelectorAll('.reset-btn').forEach((element, index) => {
+        resetItem(index);
+      });
+    }
+    function updateBillTable() {
+      billItemsBody.innerHTML = '';
+      prices.forEach((price, index) => {
+        const quantity = quantities[index];
+        const total = price * quantity;
+        if (quantity > 0) {
+          const row = `<tr>
+                         <td>Item ${index + 1}</td>
+                         <td>${quantity}</td>
+                         <td>$${total.toFixed(2)}</td>
+                       </tr>`;
+          billItemsBody.innerHTML += row;
+        }
+      });
+    }
+  </script>
+
+  <div class="hi"><button class="a123" onclick="updateBillTable()">Generate Bill</button>
+    <button class="reset-btn" onclick="resetAllItems()">Reset All</button></div>
+  </div>
+</body>
+</html>

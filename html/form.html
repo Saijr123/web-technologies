@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .hi{
+            text-align: center;
+            padding: 10px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+            flex-direction: column;
+         }
+         .test{
+            border:2px solid black;
+            padding:50px;
+         }
+    </style>
+</head>
+<body>
+    <h1 align="center"><b>Registartion Form</b></h1>
+    <form action="submitted.html">
+        <div class="test"><table border="0" align="center" cellspacing="10">
+            <tbody>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input type="text" name="Name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>
+                        <input type="email" name="email" alrt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <input type="radio" name="gender">Male
+                        <input type="radio" name="gender">Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Languages:</td>
+                    <td>
+                        <input type="checkbox" name="languages">Telugu
+                        <input type="checkbox" name="languages">Hindi
+                        <input type="checkbox" name="languages">English
+                        <input type="checkbox" name="languages">Other
+                    </td>
+                </tr>
+                <tr>
+                    <td>Religion:</td>
+                    <td>
+                        <select name="religion">
+                            <option value="Hindu">Hindu</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Muslim">Muslim</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date:</td>
+                    <td>
+                        <input type="date" name="DATE">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td>
+                        <input type="tel" name="phone number">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Upload the required file:</td>
+                    <td><input type="file" name="upload"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div class="hi">
+            <input type="submit" name="submit">
+            <input type="reset" name="reset">
+        </div>
+    </form>
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var languages = document.querySelectorAll('input[name="languages"]:checked');
+            var religion = document.getElementById('religion').value;
+            var date = document.getElementById('date').value;
+            var phone = document.getElementById('phone').value;
+            var file = document.getElementById('file').value;
+
+            if (name === "" || email === "" || !gender || languages.length === 0 || religion === "" || date === "" || phone === "" || file === "") {
+                alert("Please fill in all fields");
+                return false;
+            }
+            var namePattern = /^[A-Za-z ]+$/;
+            if (!namePattern.test(name)) {
+                alert("Invalid name. Only alphabets and spaces are allowed.");
+                return false;
+            }
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Invalid email address");
+                return false;
+            }
+
+            
+            if (!document.getElementById('male').checked && !document.getElementById('female').checked) {
+                alert("Please select a gender");
+                return false;
+            }
+
+            
+            if (!document.getElementById('telugu').checked && !document.getElementById('hindi').checked && !document.getElementById('english').checked && !document.getElementById('other').checked) {
+                alert("Please select at least one language");
+                return false;
+            }
+
+            var currentDate = new Date();
+            var selectedDate = new Date(date);
+            if (selectedDate < currentDate) {
+                alert("Invalid date. Please select a future date.");
+                return false;
+            }
+
+            
+            var phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert("Invalid phone number. Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            return true;
+            window.location.href = "success.html";
+            return false;
+        }
+</body>
+</html>

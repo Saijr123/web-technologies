@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi</title>
+
+    </head>
+    <body>
+        <img id="i1" width="0px" height="0px" alt="">
+        <br><br><br><button onclick="f1()">image change</button>
+        <script>
+            let a=0;
+            function f1()
+            {
+                if(a==0)
+                {
+                    document.getElementById("i1").style.width="150px";
+                    document.getElementById("i1").style.height="150px";
+                    document.getElementById("i1").src="https://e0.pxfuel.com/wallpapers/222/254/desktop-wallpaper-kick-buttowski.jpg";
+                    a=1;
+                }
+                else
+                {
+                    document.getElementById("i1").src="https://2.bp.blogspot.com/-Svx3f_OjGFA/UVG3D-VX2FI/AAAAAAAAAiI/X1RTkBrqVaI/s1600/KICKBUTTOWSKI_LR.jpg";
+                    a=0;
+                }
+            }
+
+        </script>
+    </body>
+</html>

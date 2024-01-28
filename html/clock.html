@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        h1 {
+            color: yellow;
+            background-color: black;
+        }
+        .clock {
+            width: 500px;
+            height: 500px;
+            border: 15px solid rgb(0, 166, 255);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            background-color: antiquewhite;
+        }
+        .centerpoint {
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 247px;
+            left: 245px;
+        }
+        .hours {
+            font-size: 30px;
+            font-weight: bold;
+            color: blue;
+            position: absolute;
+        }
+        .h-1 {
+            top: 40px;
+            right: 130px;
+        }
+        .h-2 {
+           top: 125px;
+           right: 45px; 
+        }
+        .h-3 {
+            top: 235px;
+            right: 10px;
+        }
+        .h-4 {
+            top: 345px;
+            right: 45px;
+        }
+        .h-5 {
+            top: 430px;
+            right: 130px;
+        }
+        .h-6 {
+            bottom: 10px;
+            left: 240px;
+        }
+        .h-7 {
+            top: 430px;
+            left: 130px;
+        }
+        .h-8 {
+            top: 345px;
+            left: 45px;
+        }
+        .h-9 {
+            top: 235px;
+            left: 10px;
+        }
+        .h-10 {
+            top: 125px;
+            left: 45px;
+        }
+        .h-11 {
+            top: 40px;
+            left: 130px;
+        }
+        .h-12 {
+            top: 10px;
+            left: 235px;
+        }
+        
+        
+        .minute-hand-w {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            background-color: rgb(255,182,193,0.4);
+            top: 50px;
+            left: 50px;
+            border-radius: 50%;
+        }
+        .minhand {
+            position: relative;
+        }
+        .minhand .hand {
+            width: 4px;
+            height: 200px;
+            background-color: green;
+            position: absolute;
+            left: 198px;
+        }
+        .minhand .arrow {
+            font-size: 30px;
+            font-weight: bold;
+            color: green;
+            transform: rotate(180deg);
+            position: absolute;
+            left: 190px;
+            top: -12px;
+        }
+        .hour-hand-w {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            border-radius: 50%;
+        }
+        .hourhand {
+            position: relative;
+        }
+        .hourhand .hand {
+            width: 4px;
+            height: 150px;
+            background-color: blue;
+            position: absolute;
+            left: 148px;
+        }
+        .hourhand .arrow {
+            font-size: 30px;
+            font-weight: bold;
+            color: blue;
+            transform: rotate(180deg);
+            position: absolute;
+            left: 140px;
+            top: -12px;
+        }
+        .sec-hand-w {
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            top: 75px;
+            left: 75px;
+            border-radius: 50%;
+        }
+        .sechand {
+            position: relative;
+        }
+        .sechand .hand {
+            width: 2px;
+            height: 175px;
+            background-color: black;
+            position: absolute;
+            left: 174px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">ANALOG CLOCK</h1>
+    <div class="clock">
+        <div class="centerpoint"></div>
+        <div class="hours h-1">1</div>
+        <div class="hours h-2">2</div>
+        <div class="hours h-3">3</div>
+        <div class="hours h-4">4</div>
+        <div class="hours h-5">5</div>
+        <div class="hours h-6">6</div>
+        <div class="hours h-7">7</div>
+        <div class="hours h-8">8</div>
+        <div class="hours h-9">9</div>
+        <div class="hours h-10">10</div>
+        <div class="hours h-11">11</div>
+        <div class="hours h-12">12</div>
+      
+        <div class="minute-hand-w" id="minhand">
+            <div class="minhand">
+                <div class="hand"></div>
+                <div class="arrow">V</div>
+            </div>
+        </div>
+
+        <div class="hour-hand-w" id="hourhand">
+            <div class="hourhand">
+                <div class="hand"></div>
+                <div class="arrow">V</div>
+            </div>
+        </div>
+
+        <div class="sec-hand-w" id="sechand">
+            <div class="sechand">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var second=0;
+        var minute=0;
+        var hour=0;
+        var d=new Date();
+        setInterval(
+            function() {
+                d=new Date();
+                second=d.getSeconds()*6;
+                minute=d.getMinutes()*6;
+                hour=d.getHours()*30 + Math.round(minute/12);
+                document.getElementById("sechand").style.transform="rotate("+ second+"deg)";
+                document.getElementById("minhand").style.transform="rotate("+ minute+"deg)";
+                document.getElementById("hourhand").style.transform="rotate("+ hour+"deg)";
+
+                var digitalTime = formatTime(d.getHours()) + ':' + formatTime(d.getMinutes()) + ':' + formatTime(d.getSeconds());
+                document.getElementById("digitalTime").textContent = digitalTime;
+            },1000
+        );
+        function formatTime(time) {
+            return time < 10 ? '0' + time : time;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* Set a light background color */
+        }
+
+        #abc {
+            text-align: center;
+            margin-top: 50px; /* Adjust the margin as needed */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green color on hover */
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50; /* Green color for table header */
+            color: white;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px; /* Adjust the margin as needed */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #008CBA; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0077A8; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div id="abc">
+        <button onclick="f1()">Click Here</button>
+        <form align="center">
+            <table border="1px">
+                <caption><h2>Login</h2></caption>
+                <tr>
+                    <td>User name</td>
+                    <td><input type="text" name="user" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="pass" required></td>
+                </tr>
+            </table>
+            <div class="hi">
+                <input type="submit" name="submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let a=1;
+        function f1()
+        {
+            if(a==1){
+                document.body.style.backgroundColor="red";
+                document.getElementById('abc').style.color='green';
+                a=2;
+            }
+            else if(a==2){
+                document.body.style.backgroundColor="green";
+                a=0;
+            }
+            else{
+                document.body.style.backgroundColor="blue";
+                a=1;
+            }
+        }
+    </script>
+</body>
+</html>

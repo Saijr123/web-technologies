@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Page</title>
+    <!-- Include Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .card {
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-indigo-600 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-white text-xl font-semibold">Student Page</div>
+        <ul class="flex space-x-4">
+          <li>
+            <a
+              href="#profile"
+              class="text-white hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out cursor-pointer p-2 rounded-md"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a
+              href="#placement-status"
+              class="text-white hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out cursor-pointer p-2 rounded-md"
+              >Placement Status</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content Layout -->
+    <div class="container mx-auto mt-8 flex">
+      <!-- Profile Section (1/3 of the page) -->
+      <div class="w-1/3 bg-white p-4">
+        <h2 class="text-2xl font-semibold mb-4">Profile</h2>
+        <div class="bg-gray-100 rounded-lg p-4 shadow-md">
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">First Name:</p>
+            <p class="text-gray-900">John</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">Last Name:</p>
+            <p class="text-gray-900">Doe</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">Email:</p>
+            <p class="text-gray-900">john@example.com</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">Date of Birth:</p>
+            <p class="text-gray-900">1990-01-01</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">Department ID:</p>
+            <p class="text-gray-900">12345</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">Phone Number:</p>
+            <p class="text-gray-900">123-456-7890</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-gray-700 font-semibold">Student ID:</p>
+            <p class="text-gray-900">S12345</p>
+          </div>
+          <!-- Add more profile details here -->
+        </div>
+      </div>
+
+      <!-- Placement Status Section (2/3 of the page) -->
+
+      <h2 class="text-2xl font-semibold mb-4">Placement Status</h2>
+      <div class="w-2/3 p-4 flex flex-wrap" id="cardsContainer">
+        <!-- Placement Status Cards -->
+        <div class="grid lg:grid-cols-4 sm:grid-cols-2 gap-4">
+          <!-- Placement Status Card 1 -->
+          <div class="bg-green-300 rounded-lg p-4 shadow-md h-auto w-auto">
+            <h3 class="text-xl font-semibold">Placement Result</h3>
+            <p>Selected</p>
+            <h3 class="text-xl font-semibold">Company</h3>
+            <p>Flipcart</p>
+            <h3 class="text-xl font-semibold">LPA</h3>
+            <p>10LPA</p>
+            <h3 class="text-xl font-semibold">Batch</h3>
+            <p>2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      // Fetching data from JSON file
+      import { hello } from "./data.js";
+
+      const container = document.getElementById("cardsContainer");
+
+      hello.forEach((item) => {
+        // Create card div
+        const card = document.createElement("div");
+        card.className = "card";
+
+        // // Create company name element
+        // const companyName = document.createElement("h2");
+        // companyName.textContent = item.company;
+        // card.appendChild(companyName);
+
+        // // Create lpa element
+        // const lpa = document.createElement("p");
+        // lpa.textContent = item.package;
+        // card.appendChild(lpa);
+
+        // // Create student name element
+        // const studentName = document.createElement("p");
+        // studentName.textContent = item.name;
+        // card.appendChild(studentName);
+
+        card.innerHTML = `
+            <h3 class="text-xl font-semibold">Placement Result</h3>
+            <p>Selected</p>
+            <h3 class="text-xl font-semibold">Company</h3>
+            <p>${item.company}</p>
+            <h3 class="text-xl font-semibold">LPA</h3>
+            <p>${item.package}LPA</p>
+            <h3 class="text-xl font-semibold">Batch</h3>
+            <p>${item.batch}</p>
+         `;
+
+        // Create heart icon here
+        console.log(item.package, item.company, item.name, item.batch);
+
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manage.css">
+    <title>Bill Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(https://th.bing.com/th/id/OIP.hkh14F_c3N_nKL0Y6JFXAwHaEo?rs=1&pid=ImgDetMain);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manage.css">
+    <title>Bill Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="bill-table">
+            <thead>
+                <tr>
+                    <th colspan="1" class="item-name">Itemname</th>
+                    <th colspan="2" class="item-name">Itemprice</th>
+                    <th colspan="1" class="item-name">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="item">
+                    <td class="item-name">Pizza</td>
+                    <td class="item-price">$<span id="price1">5</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item1', -1)">-</button></td>
+                    <td class="quantity" id="item1">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item1', 1)">+</button></td>
+                </tr>
+                <tr class="item">
+                    <td class="item-name">Burger</td>
+                    <td class="item-price">$<span id="price2">10</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item2', -1)">-</button></td>
+                    <td class="quantity" id="item2">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item2', 1)">+</button></td>
+                </tr>
+                <tr class="item">
+                    <td class="item-name">Kachori</td>
+                    <td class="item-price">$<span id="price3">15</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item3', -1)">-</button></td>
+                    <td class="quantity" id="item3">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item3', 1)">+</button></td>
+                </tr>
+                <tr class="item">
+                    <td class="item-name">Jalebi</td>
+                    <td class="item-price">$<span id="price4">20</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item4', -1)">-</button></td>
+                    <td class="quantity" id="item4">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item4', 1)">+</button></td>
+                </tr>
+                <tr class="item">
+                    <td class="item-name">Pasta</td>
+                    <td class="item-price">$<span id="price5">25</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item5', -1)">-</button></td>
+                    <td class="quantity" id="item5">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item5', 1)">+</button></td>
+                </tr>
+                <tr class="item">
+                    <td class="item-name">Samosa</td>
+                    <td class="item-price">$<span id="price6">30</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item6', -1)">-</button></td>
+                    <td class="quantity" id="item6">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item6', 1)">+</button></td>
+                </tr>
+                <tr class="item">
+                    <td class="item-name">Noodles</td>
+                    <td class="item-price">$<span id="price7">35</span></td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item7', -1)">-</button></td>
+                    <td class="quantity" id="item7">0</td>
+                    <td><button class="quantity-btn" onclick="adjustQuantity('item7', 1)">+</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="total">
+                        <span>Total:</span>
+                        <span id="total">0</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script src="manage.js"></script>
+</body>
+</html>
